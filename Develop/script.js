@@ -59,7 +59,7 @@ const getRandomEmployee = function (employeesArray) {
   const randomNum = Math.floor(
     Math.random() * (maxFloored - minCeiled + 1) + minCeiled
   ); // The maximum is inclusive and the minimum is inclusive -LN
-  console.log(randomNum);
+  // console.log(randomNum);
   const randomFirst = employeesArray[randomNum].firstName;
   const randomLast = employeesArray[randomNum].lastName;
 
