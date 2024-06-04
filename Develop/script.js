@@ -8,7 +8,7 @@ const collectEmployees = function () {
   let employees = [];
 
   let addEmployees = true;
-
+  //prompts the user to add the information into the table
   while (addEmployees) {
     const firstName = prompt("what is your first name?");
     const lastName = prompt("what is your last name?");
@@ -42,17 +42,31 @@ const displayAverageSalary = function (employeesArray) {
   let sum = 0;
   //for loop: add salary into total salary
   for (let i = 0; i < employeesArray.length; i++) {
-    sum += employeesArray[i].salary;
+    sum += parseFloat(employeesArray[i].salary);
   }
   console.log(sum);
-
+  const avgSalary = sum / employeesArray.length;
+  console.log(avgSalary);
+  return avgSalary;
   //return average salary
 };
 
 // Select a random employee
 const getRandomEmployee = function (employeesArray) {
+  //use Math.random() to select random integer from the array and return it to the function -LN
+  const minCeiled = Math.ceil(0);
+  const maxFloored = Math.floor(employeesArray.length-1);
+  const randomNum = Math.floor(
+    Math.random() * (maxFloored - minCeiled + 1) + minCeiled
+  ); // The maximum is inclusive and the minimum is inclusive -LN
+  console.log(randomNum);
+  const randomFirst = employeesArray[randomNum].firstName;
+  const randomLast = employeesArray[randomNum].lastName;
+
+
+  console.log(`Congratulations to ${randomFirst} ${randomLast}, our random drawing winner!`);
+
   // TODO: Select and display a random employee
-  //
 };
 
 /*
@@ -103,19 +117,19 @@ const trackEmployeeData = function () {
 
   displayAverageSalary(employees);
 
-  // console.log('==============================');
+  console.log("==============================");
 
-  // getRandomEmployee(employees);
+  getRandomEmployee(employees);
 
-  // employees.sort(function(a,b) {
-  //   if (a.lastName < b.lastName) {
-  //     return -1;
-  //   } else {
-  //     return 1;
-  //   }
-  // });
+  employees.sort(function(a,b) {
+    if (a.lastName < b.lastName) {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
 
-  // displayEmployees(employees);
+  displayEmployees(employees);
 };
 
 // Add event listener to 'Add Employees' button
